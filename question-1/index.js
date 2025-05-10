@@ -1,9 +1,9 @@
 const express = require('express');
 const app = express();
 require('dotenv').config(); 
-const numberController = require('./controllers/numberController'); 
+const numberController = require('./controller/numberController'); 
 
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 
 app.get('/numbers/:type', numberController.getNumbers);
 
