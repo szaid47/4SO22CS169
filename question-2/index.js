@@ -1,14 +1,13 @@
 const express = require('express');
-require('dotenv').config();
+const dotenv = require('dotenv');
+const stockRoutes = require('./routes/stockRoutes');
 
+dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+app.use(express.json());
 
+app.use('/', stockRoutes);
 
-app.use('/stocks', stockRoutes);
-
-
-app.listen(PORT, () => {
-  console.log(`Stock service running on port ${PORT}`);
-});
+const PORT = process.env.PORT || 9876;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
